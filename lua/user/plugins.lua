@@ -51,7 +51,7 @@ return packer.startup(function(use)
   -- Lua Development
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use "nvim-lua/popup.nvim"
-  use "christianchiarulli/lua-dev.nvim"
+  -- use "christianchiarulli/lua-dev.nvim"
   -- use "folke/lua-dev.nvim"
 
   -- LSP
@@ -65,15 +65,15 @@ return packer.startup(function(use)
   use "simrat39/symbols-outline.nvim"
   use "b0o/SchemaStore.nvim"
   -- use "github/copilot.vim"
-  use {
-    "zbirenbaum/copilot.lua",
-    event = { "VimEnter" },
-    config = function()
-      vim.defer_fn(function()
-        require "user.copilot"
-      end, 100)
-    end,
-  }
+  -- use {
+  --   "zbirenbaum/copilot.lua",
+  --   event = { "VimEnter" },
+  --   config = function()
+  --     vim.defer_fn(function()
+  --       require "user.copilot"
+  --     end, 100)
+  --   end,
+  -- }
   use "RRethy/vim-illuminate"
   use "j-hui/fidget.nvim"
   use "lvimuser/lsp-inlayhints.nvim"
@@ -89,9 +89,9 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-emoji"
   use "hrsh7th/cmp-nvim-lua"
-  use "zbirenbaum/copilot-cmp"
-  use { "tzachar/cmp-tabnine", commit = "1a8fd2795e4317fd564da269cc64a2fa17ee854e", 
-run = "./install.sh" }
+  --   use "zbirenbaum/copilot-cmp"
+  --   use { "tzachar/cmp-tabnine", commit = "1a8fd2795e4317fd564da269cc64a2fa17ee854e",
+  -- run = "./install.sh" }
 
   -- Snippet
   use "L3MON4D3/LuaSnip" --snippet engine
@@ -133,7 +133,6 @@ run = "./install.sh" }
   use "lunarvim/onedarker.nvim"
   use "lunarvim/darkplus.nvim"
   use "folke/tokyonight.nvim"
-  -- use "lunarvim/colorschemes"
 
   -- Utility
   use "rcarriga/nvim-notify"
@@ -156,7 +155,7 @@ run = "./install.sh" }
   -- use "Pocco81/DAPInstall.nvim"
 
   -- Tabline
-  -- use "akinsho/bufferline.nvim"
+  use "akinsho/bufferline.nvim"
   -- use "tiagovla/scope.nvim"
 
   -- Statusline
@@ -170,7 +169,6 @@ run = "./install.sh" }
 
   -- File Explorer
   use "kyazdani42/nvim-tree.lua"
-  use "christianchiarulli/lir.nvim"
 
   -- Comment
   use "numToStr/Comment.nvim"
@@ -205,7 +203,7 @@ run = "./install.sh" }
   use "mattn/webapi-vim"
 
   -- Github
-  use "pwntester/octo.nvim"
+  -- use "pwntester/octo.nvim"
 
   -- Editing Support
   use "windwp/nvim-autopairs"
@@ -218,21 +216,11 @@ run = "./install.sh" }
   use "junegunn/vim-slash"
 
   -- Motion
-  use "phaazon/hop.nvim"
+  -- use "phaazon/hop.nvim"
   -- use "jinh0/eyeliner.nvim"
 
   -- Keybinding
   use "folke/which-key.nvim"
-
-  -- Java
-  use "mfussenegger/nvim-jdtls"
-
-  -- Rust
-  use { "christianchiarulli/rust-tools.nvim", branch = "modularize_and_inlay_rewrite" }
-  use "Saecki/crates.nvim"
-
-  -- Typescript TODO: set this up, also add keybinds to ftplugin
-  use "jose-elias-alvarez/typescript.nvim"
 
   -- Markdown
   use {

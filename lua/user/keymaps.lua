@@ -41,14 +41,14 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- I hate typing these
--- keymap("n", "H", "^", opts)
--- keymap("n", "L", "$", opts)
--- keymap("v", "H", "^", opts)
--- keymap("v", "L", "$", opts)
--- keymap("x", "H", "^", opts)
--- keymap("x", "L", "$", opts)
--- keymap("o", "H", "^", opts)
--- keymap("o", "L", "$", opts)
+keymap("n", "H", "^", opts)
+keymap("n", "L", "$", opts)
+keymap("v", "H", "^", opts)
+keymap("v", "L", "$", opts)
+keymap("x", "H", "^", opts)
+keymap("x", "L", "$", opts)
+keymap("o", "H", "^", opts)
+keymap("o", "L", "$", opts)
 
 -- keymap("n", "n", "nzzzv", opts)
 -- keymap("n", "N", "Nzzzv", opts)
@@ -199,6 +199,5 @@ vim.cmd [[
 ]]
 
 keymap("n", "<m-q>", ":call QuickFixToggle()<cr>", opts)
-keymap("n", "<c-l>", "<cmd>lua vim.lsp.codelens.run()<cr>", opts)
 
 return M
