@@ -52,28 +52,6 @@ M.get_filename = function()
   end
 end
 
--- local get_gps = function()
---   local status_gps_ok, gps = pcall(require, "nvim-gps")
---   if not status_gps_ok then
---     return ""
---   end
---
---   local status_ok, gps_location = pcall(gps.get_location, {})
---   if not status_ok then
---     return ""
---   end
---
---   if not gps.is_available() or gps_location == "error" then
---     return ""
---   end
---
---   if not require("user.functions").isempty(gps_location) then
---     return require("user.icons").ui.ChevronRight .. " " .. gps_location
---   else
---     return ""
---   end
--- end
-
 local get_gps = function()
   local status_gps_ok, gps = pcall(require, "nvim-navic")
   if not status_gps_ok then
@@ -163,3 +141,41 @@ end
 M.create_winbar()
 
 return M
+
+-- // Defaults, just show the filename
+-- require('winbar').setup({
+--     enabled = true,
+
+--     show_file_path = true,
+--     show_symbols = true,
+
+--     colors = {
+--         path = '', -- You can customize colors like #c946fd
+--         file_name = '',
+--         symbols = '',
+--     },
+
+--     icons = {
+--         file_icon_default = '',
+--         seperator = '>',
+--         editor_state = '●',
+--         lock_icon = '',
+--     },
+
+--     exclude_filetype = {
+--         'help',
+--         'startify',
+--         'dashboard',
+--         'packer',
+--         'neogitstatus',
+--         'NvimTree',
+--         'Trouble',
+--         'alpha',
+--         'lir',
+--         'Outline',
+--         'spectre_panel',
+--         'toggleterm',
+--         'qf',
+--     }
+-- })
+

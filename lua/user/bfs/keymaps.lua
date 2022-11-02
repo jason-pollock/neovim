@@ -47,3 +47,4 @@ function M.setKeymaps(win, buf)
 end
 
 return M
+

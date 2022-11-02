@@ -51,3 +51,4 @@ vim.notify = function(msg, ...)
 
   notify_filter(msg, ...)
 end
+

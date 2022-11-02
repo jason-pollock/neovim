@@ -32,9 +32,8 @@ end
 
 -- Have packer use a popup window
 packer.init {
-  -- snapshot = "july-24",
   snapshot_path = fn.stdpath "config" .. "/snapshots",
-  max_jobs = 50,
+  max_jobs = 10,
   display = {
     open_fn = function()
       return require("packer.util").float { border = "rounded" }
@@ -48,8 +47,8 @@ return packer.startup(function(use)
   -- Plugin Mangager
   use "wbthomason/packer.nvim" -- Have packer manage itself
 
-  -- Lua Development
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+    -- Lua Development
+  use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
   use "nvim-lua/popup.nvim"
   -- use "christianchiarulli/lua-dev.nvim"
   -- use "folke/lua-dev.nvim"
@@ -60,6 +59,7 @@ return packer.startup(function(use)
   use "williamboman/mason.nvim"
   use "williamboman/mason-lspconfig.nvim"
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  -- use "roxma/LanguageServer-php-neovim"
   use "ray-x/lsp_signature.nvim"
   use "SmiteshP/nvim-navic"
   use "simrat39/symbols-outline.nvim"
@@ -79,6 +79,7 @@ return packer.startup(function(use)
   use "lvimuser/lsp-inlayhints.nvim"
   -- use "simrat39/inlay-hints.nvim"
   use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
+  -- use "kosayoda/nvim-lightbulb"
 
   -- Completion
   use "christianchiarulli/nvim-cmp"
@@ -90,8 +91,7 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-emoji"
   use "hrsh7th/cmp-nvim-lua"
   --   use "zbirenbaum/copilot-cmp"
-  --   use { "tzachar/cmp-tabnine", commit = "1a8fd2795e4317fd564da269cc64a2fa17ee854e",
-  -- run = "./install.sh" }
+  use { "tzachar/cmp-tabnine", run = "./install.sh" }
 
   -- Snippet
   use "L3MON4D3/LuaSnip" --snippet engine
@@ -159,7 +159,15 @@ return packer.startup(function(use)
   -- use "tiagovla/scope.nvim"
 
   -- Statusline
-  use "christianchiarulli/lualine.nvim"
+  -- use {
+  --   "nvim-lualine/lualine.nvim",
+  --   config = function()
+  --     require("user.lualine").setup()
+  --   end
+  -- }
+  -- use "christianchiarulli/lualine.nvim"
+  use "nvim-lualine/lualine.nvim"
+  use "fgheng/winbar.nvim"
 
   -- Startup
   use "goolord/alpha-nvim"
@@ -169,6 +177,7 @@ return packer.startup(function(use)
 
   -- File Explorer
   use "kyazdani42/nvim-tree.lua"
+  use "stevearc/aerial.nvim"
 
   -- Comment
   use "numToStr/Comment.nvim"
@@ -186,6 +195,7 @@ return packer.startup(function(use)
   use "rmagatti/session-lens"
 
   -- Quickfix
+  use "folke/trouble.nvim"
   use "kevinhwang91/nvim-bqf"
 
   -- Code Runner
@@ -229,39 +239,7 @@ return packer.startup(function(use)
     ft = "markdown",
   }
 
-  -- Graveyard
-  -- use "romgrk/nvim-treesitter-context"
-  -- use "mizlan/iswap.nvim"
-  -- use {'christianchiarulli/nvim-ts-rainbow'}
-  -- use "nvim-telescope/telescope-ui-select.nvim"
-  -- use "nvim-telescope/telescope-file-browser.nvim"
-  -- use 'David-Kunz/cmp-npm' -- doesn't seem to work
-  -- use { "christianchiarulli/JABS.nvim" }
-  -- use "lunarvim/vim-solidity"
-  -- use "tpope/vim-repeat"
-  -- use "Shatur/neovim-session-manager"
-  -- use "metakirby5/codi.vim"
-  -- use { "nyngwang/NeoZoom.lua", branch = "neo-zoom-original" }
-  -- use "rcarriga/cmp-dap"
-  -- use "filipdutescu/renamer.nvim"
-  -- use "https://github.com/rhysd/conflict-marker.vim"
-  -- use "rebelot/kanagawa.nvim"
-  -- use "unblevable/quick-scope"
-  -- use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
-  -- use "gbprod/cutlass.nvim"
-  -- use "christianchiarulli/lsp-inlay-hints"
-  -- use "rmagatti/goto-preview"
-  -- use "stevearc/aerial.nvim"
-  -- use "nvim-lua/lsp_extensions.nvim"
-  -- use { "christianchiarulli/nvim-gps", branch = "text_hl" }
-  -- use "stevearc/stickybuf.nvim"
-  -- use "folke/trouble.nvim"
-  -- use "drybalka/tree-climber.nvim"
-  -- use "phaazon/hop.nvim"
-  -- use { "michaelb/sniprun", run = "bash ./install.sh" }
 
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end

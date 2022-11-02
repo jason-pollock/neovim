@@ -1,4 +1,9 @@
 -- TODO: scope open buffers to project
+-- BFS = Breadth First Search
+-- https://github.com/neovim/neovim/issues/1035
+
+
+require "split"
 
 local M = {}
 
@@ -196,3 +201,4 @@ M.open = function()
 end
 
 return M
+

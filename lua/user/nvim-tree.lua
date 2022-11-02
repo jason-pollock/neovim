@@ -1,35 +1,15 @@
-local status_ok, nvim_tree = pcall(require, "nvim-tree")
-if not status_ok then
-  return
-end
+-- examples for your init.lua
 
-local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
-if not config_status_ok then
-  return
-end
+-- disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 local icons = require "user.icons"
 
-local tree_cb = nvim_tree_config.nvim_tree_callback
+local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 
-local utils = require "nvim-tree.utils"
-
----@diagnostic disable-next-line: unused-local
-local function notify_level(level)
-  return function(msg)
-    vim.schedule(function()
-      vim.api.nvim_echo({ { msg, "WarningMsg" } }, false, {})
-    end)
-  end
-end
-
-utils.notify.warn = notify_level(vim.log.levels.WARN)
-utils.notify.error = notify_level(vim.log.levels.ERROR)
-utils.notify.info = notify_level(vim.log.levels.INFO)
-utils.notify.debug = notify_level(vim.log.levels.DEBUG)
-
-nvim_tree.setup {
-  hijack_directories = {
+require("nvim-tree").setup({
+      hijack_directories = {
     enable = false,
   },
   -- update_to_buf_dir = {
@@ -124,14 +104,6 @@ nvim_tree.setup {
     update_cwd = true,
     ignore_list = {},
   },
-  -- system_open = {
-  --   cmd = nil,
-  --   args = {},
-  -- },
-  -- filters = {
-  --   dotfiles = false,
-  --   custom = {},
-  -- },
   git = {
     enable = true,
     ignore = true,
@@ -139,6 +111,10 @@ nvim_tree.setup {
   },
   view = {
     width = 30,
+    -- height = 30,
+    hide_root_folder = false,
+    side = "left",
+    -- auto_resize = true,
     mappings = {
       custom_only = false,
       list = {
@@ -150,4 +126,4 @@ nvim_tree.setup {
     number = false,
     relativenumber = false,
   },
-}
+})

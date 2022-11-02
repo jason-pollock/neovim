@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-dressing.setup {
+dressing.setup({
   input = {
     -- Set to false to disable the vim.ui.input implementation
     enabled = true,
@@ -16,6 +16,9 @@ dressing.setup {
 
     -- When true, <Esc> will close the modal
     insert_only = true,
+
+    -- When true, input will start in insert mode.
+    start_in_insert = true,
 
     -- These are passed to nvim_open_win
     anchor = "SW",
@@ -36,6 +39,20 @@ dressing.setup {
     -- Change default highlight groups (see :help winhl)
     winhighlight = "",
 
+    -- Set to `false` to disable
+    mappings = {
+      n = {
+        ["<Esc>"] = "Close",
+        ["<CR>"] = "Confirm",
+      },
+      i = {
+        ["<C-c>"] = "Close",
+        ["<CR>"] = "Confirm",
+        ["<Up>"] = "HistoryPrev",
+        ["<Down>"] = "HistoryNext",
+      },
+    },
+
     override = function(conf)
       -- This is the config that will be passed to nvim_open_win.
       -- Change values here to customize the layout
@@ -50,8 +67,7 @@ dressing.setup {
     enabled = true,
 
     -- Priority list of preferred vim.select implementations
-    -- backend = { "telescope", "fzf_lua", "fzf", "builtin", "nui" },
-    backend = { "builtin", "telescope", "nui" },
+    backend = { "telescope", "fzf_lua", "fzf", "builtin", "nui" },
 
     -- Trim trailing `:` from prompt
     trim_prompt = true,
@@ -60,6 +76,22 @@ dressing.setup {
     -- These are passed into the telescope picker directly. Can be used like:
     -- telescope = require('telescope.themes').get_ivy({...})
     telescope = nil,
+
+    -- Options for fzf selector
+    fzf = {
+      window = {
+        width = 0.5,
+        height = 0.4,
+      },
+    },
+
+    -- Options for fzf_lua selector
+    fzf_lua = {
+      winopts = {
+        width = 0.5,
+        height = 0.4,
+      },
+    },
 
     -- Options for nui Menu
     nui = {
@@ -105,6 +137,13 @@ dressing.setup {
       max_height = 0.9,
       min_height = { 10, 0.2 },
 
+      -- Set to `false` to disable
+      mappings = {
+        ["<Esc>"] = "Close",
+        ["<C-c>"] = "Close",
+        ["<CR>"] = "Confirm",
+      },
+
       override = function(conf)
         -- This is the config that will be passed to nvim_open_win.
         -- Change values here to customize the layout
@@ -118,4 +157,4 @@ dressing.setup {
     -- see :help dressing_get_config
     get_config = nil,
   },
-}
+})
